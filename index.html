@@ -28,16 +28,18 @@
       colorLight : "#ffffff",
       correctLevel : QRCode.CorrectLevel.H
     });
-
+    const dataList = []
     function submit() {
       // Gather all data
       const data = document.getElementById("teamNumber").value + "," +
                    document.getElementById("scouterName").value + "," +
                    document.getElementById("matchNumber").value;
-
-      alert("THANK YOU FOR SCOUTING!");
+      datalist.push(document.getElementById("matchNumber").value);
       allData.push(data);
-      alert("Your data is: " + allData);
+      for(let 1=0; i< myArray.length; i++) {
+        alert(dataList[i]);
+      }
+      
 
       // Clear the previous QR code
       document.getElementById("qrcode").innerHTML = "";
