@@ -30,25 +30,15 @@ submit - submit button
     <br>
     <br>
         <button type="button" id="submit">Submit!</button>
-    <canvas id="qrCanvas"></canvas>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"> // This is a bit vibe coaded</script>
 
     <script>
               function submit() { //This is what happens when you submit, and it will output the QR code.
             alert("THANK YOU FOR SCOUTING!");
-                  document.getElementById('qrCanvas').value = "sean" // Fix this to show the actual data
           }
-const qr = new QRious({ // This part is vibe coded as well
-    element: document.getElementById('qrCanvas'),
-    size: 200,
-    value: ''
-});
 
-          // Get a reference to the button element
-          // Add an event listener to the button
           document.getElementById("submit");.addEventListener("click", submit); // This is what is going to check for when the submit button is pressed, and then call the function.
 
     </script>
