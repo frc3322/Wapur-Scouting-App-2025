@@ -1,50 +1,59 @@
-<!-- 
-Documentation is very important for this project :)
-
-For each of the input boxes, this is the list of the id's and what they all do
-
-teamNumber - The team number
-scouterName - The scouter's name
-matchNubmer - The match number
-
-
-
-
-
-
-
-submit - submit button
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3322 Wapur 2025 Scouting</title>
 </head>
 <body>
   <h1>3322 Wapur 2025 Scouting</h1>
-        <input type="text" id="teamNumber" placeholder="Team Number">
-        <input type="text" id="scouterName" placeholder="Scouter Name">
-        <input type="text" id="matchNumber" placeholder="Match Number">
-    <br>
-    <br>
-        <button type="button" id="submit" onclick="submit()">Submit!</button>
+  
+  <input type="text" id="teamNumber" placeholder="Team Number">
+  <input type="text" id="scouterName" placeholder="Scouter Name">
+  <input type="text" id="matchNumber" placeholder="Match Number">
+  <br><br>
+  <button type="button" id="submit">Submit!</button>
+  <div id="qrcode"></div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const allData = [];
 
+    // Create QR code object outside, but we’ll update it later
+    const qrcode = new QRCode(document.getElementById("qrcode"), {
+      text: "Waiting for input...",
+      width: 128,
+      height: 128,
+      colorDark : "#000000",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
+    });
 
+    function submit() {
+      // Gather all data
+      const data = document.getElementById("teamNumber").value + "," +
+                   document.getElementById("scouterName").value + "," +
+                   document.getElementById("matchNumber").value;
 
-    <script>
-              function submit() { //This is what happens when you submit, and it will output the QR code.
-            data = document.getElementById("teamNumber").value + "," + document.getElementById("scouterName").value + "," + document.getElementById("matchNumber").value + ","
+      alert("THANK YOU FOR SCOUTING!");
+      allData.push(data);
+      alert("Your data is: " + allData);
 
-            alert("THANK YOU FOR SCOUTING!");
-            alert("Your data is: " + data);
+      // Clear the previous QR code
+      document.getElementById("qrcode").innerHTML = "";
 
-          }
+      // Generate a new QR code with the latest data
+      new QRCode(document.getElementById("qrcode"), {
+        text: data,
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+    }
 
-          document.getElementById("submit").addEventListener("click", submit); // This is what is going to check for when the submit button is pressed, and then call the function.
-
-    </script>
+    document.getElementById("submit").addEventListener("click", submit);
+  </script>
 </body>
 </html>
