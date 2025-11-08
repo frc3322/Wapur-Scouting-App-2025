@@ -1,11 +1,19 @@
 <!-- 
-Documentation is very important for this project
+Documentation is very important for this project :)
 
 For each of the input boxes, this is the list of the id's and what they all do
 
 teamNumber - The team number
 scouterName - The scouter's name
 matchNubmer - The match number
+
+
+
+
+
+
+
+submit - submit button
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +27,26 @@ matchNubmer - The match number
         <input type="text" id="teamNumber" placeholder="Team Number">
         <input type="text" id="scouterName" placeholder="Scouter Name">
         <input type="text" id="matchNumber" placeholder="Match Number">
-    
+    <br>
+    <br>
+        <button type="button" id="submit">Submit!</button>
     <script>
+              function doSomething() { //This is what happens when you submit, and it will output the QR code.
+            alert("THANK YOU FOR SCOUTING!");
+                  document.getElementById('qrCanvas').value = "sean" // Fix this to show the actual data
+          }
+        <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"> // This is a bit vibe coaded</script>
+<script>
+const qr = new QRious({ // This part is vibe coded as well
+    element: document.getElementById('qrCanvas'),
+    size: 200,
+    value: ''
+});
+
+          // Get a reference to the button element
+          // Add an event listener to the button
+          document.getElementById("submit");.addEventListener("click", submit); // This is what is going to check for when the submit button is pressed, and then call the function.
+
     </script>
 </body>
 </html>
