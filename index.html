@@ -17,15 +17,28 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
-      const dataList = []
+    const allData = [];
+
+    // Create QR code object outside, but we’ll update it later
+    const qrcode = new QRCode(document.getElementById("qrcode"), {
+      text: "Waiting for input...",
+      width: 128,
+      height: 128,
+      colorDark : "#000000",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
+    });
+
     function submit() {
       // Gather all data
       const data = document.getElementById("teamNumber").value + "," +
                    document.getElementById("scouterName").value + "," +
                    document.getElementById("matchNumber").value;
 
+      alert("THANK YOU FOR SCOUTING!");
       allData.push(data);
-      
+      alert("Your data is: " + allData);
+
       // Clear the previous QR code
       document.getElementById("qrcode").innerHTML = "";
 
