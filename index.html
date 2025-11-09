@@ -1,3 +1,21 @@
+<!-- 
+Documentation is very important for this project
+
+For all of the interactive elements, here is their ID and what they do:
+
+mobility - mobility
+ballsShotOver - MCQ of how many balls were shot over
+
+
+teamNumber - The team number
+scouterName - The scouter's name
+matchNubmer - The match number
+
+
+submit - The submit button
+-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +25,23 @@
 </head>
 <body>
   <h1>3322 Wapur 2025 Scouting</h1>
-  
+  <br>
+  <h2>Auton:</h2>
+    <label for="mobility">Mobility:</label>
+    <input type="checkbox" id="mobility"><br>
+
+    <label for="ballsShotOver">How many balls were shot over?:</label>
+    <select name="ballsShotOver" id="ballsShotOver">
+    <option value="allShotOver">allShotOver</option>
+    <option value="someShotOver">someShotOver</option>
+    <option value="noneShotOver">noneShotOver</option>
+    <option value="audi">Audi</option>
+  </select>
+
+
+
+
+  <h2>Match info:</h2>
   <input type="text" id="teamNumber" placeholder="Team Number">
   <input type="text" id="scouterName" placeholder="Scouter Name">
   <input type="text" id="matchNumber" placeholder="Match Number">
@@ -21,18 +55,24 @@
 
     
     const dataList = [
-        ["teamNumber", "scouterName", "matchNumber"]
+        ["teamNumber", "scouterName", "matchNumber", "mobility", "ballsShotOver"]
     ]
     function submit() {
       // Gather all data
       const data = document.getElementById("teamNumber").value + "," +
-                   document.getElementById("scouterName").value + "," +
-                   document.getElementById("matchNumber").value;
+                  document.getElementById("scouterName").value + "," +
+                  document.getElementById("matchNumber").value + "," + 
+                  (document.getElementById("mobility").checked ? "Yes" : "No") + "," + 
+                  document.getElementById("ballsShotOver").value;
       //datalist.push(document.getElementById("matchNumber").value + "");
       dataList.push([
         document.getElementById("teamNumber").value, 
         document.getElementById("scouterName").value, 
-        document.getElementById("matchNumber").value]);
+        document.getElementById("matchNumber").value,
+        (document.getElementById("mobility").checked ? "Yes" : "No"),
+        document.getElementById("ballsShotOver").value
+      ]);
+
      
         const csvContent = dataList.map(row => row.join(",")).join("\n");
 
