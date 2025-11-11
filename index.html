@@ -26,7 +26,7 @@ teamNumber - The team number
 scouterName - The scouter's name
 matchNubmer - The match number
 
-
+increaseL1Button - Button to increase L1 button
 
 MISC:
 submit - The submit button
@@ -66,8 +66,10 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 
 
   <p>Crates succeeded and failed:</p>
-
-
+  <p>L1<p>
+  <button onclick="changeL1Value(1)" id="increaseL1Button">0</button>
+  <button onclick="changeL1Value(-1)">Decrease! the succeded L1 by one</button>
+  
   <p>Buckets:</p>
   <label for="bucketsSucceeded">L4:</label>
   <input type="text" id="bucketsSucceeded" placeholder="Team Number">
@@ -122,6 +124,8 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         const dataUrl = "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent);
 
 
+
+
         // Generate QR code linking to the CSV data URL
         new QRCode(document.getElementById("qrcode"), {
         text: dataUrl,   // this is the file download link encoded in the QR
@@ -131,7 +135,9 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 
       }
     
-
+        function changeL1Value(delta) {
+        document.getElementById("increaseL1Button").textContent = +document.getElementById("increaseL1Button").textContent + delta;
+        }
 
     document.getElementById("submit").addEventListener("click", submit);
   </script>
