@@ -3,19 +3,24 @@ Documentation is very important for this project
 
 For all of the interactive elements, here is their ID and what they do:
 
+AUTON:
 mobility - mobility
 ballsShotOver - MCQ of how many balls were shot over
+cratesPushed - The number of the crates pushed over the line in auto
 
 
+
+
+
+MATCH INFORMATION:
 teamNumber - The team number
 scouterName - The scouter's name
 matchNubmer - The match number
 
 
+MISC:
 submit - The submit button
 -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +41,10 @@ submit - The submit button
     <option value="someShotOver">someShotOver</option>
     <option value="noneShotOver">noneShotOver</option>
   </select>
+  <br>
+
+  <label for="cratesPushed">How many crates were pushed over the line?:</label>
+  <input type="text" id="cratesPushed" placeholder="Team Number">
 
 
 
