@@ -6,7 +6,7 @@ For all of the interactive elements, here is their ID and what they do:
 AUTON:
 mobility - mobility
 ballsShotOver - MCQ of how many balls were shot over
-cratesPushed - The number of the crates pushed over the line in auto // This still needs to be added to the QR code
+cratesPushed - The number of the crates pushed over the line in auto 
 
 TELEOP: 
 L1Succeeded 
@@ -18,6 +18,9 @@ L3Failed
 L4Succeeded 
 L4Failed
 
+bucketsSucceeded // These three haven't been added into the QR code yet.
+bucketsFailed
+methodOfBuckets - MCQ
 
 
 MATCH INFORMATION:
@@ -29,6 +32,11 @@ matchNubmer - The match number
 
 MISC:
 submit - The submit button
+
+
+
+Todo:
+Put the whole form into a form tag, and make it so that it clears when you submit the form.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +67,7 @@ submit - The submit button
 
 
 
-  <p>Succeeded    Failed</p>
+  <p>Crates succeeded and failed:</p>
   <label for="L1Succeeded">L1:</label>
   <input type="text" id="L1Succeeded" placeholder="Team Number">
   <input type="text" id="L1Failed" placeholder="Team Number">
@@ -76,8 +84,21 @@ submit - The submit button
   <input type="text" id="L4Succeeded" placeholder="Team Number">
   <input type="text" id="L4Failed" placeholder="Team Number">
 
+  <p>Buckets:</p>
+  <label for="bucketsSucceeded">L4:</label>
+  <input type="text" id="bucketsSucceeded" placeholder="Team Number">
+  <input type="text" id="bucketsFailed" placeholder="Team Number">
+  <br>
   
-  
+    <label for="methodOfBuckets">How did they score the buckets?:</label>
+    <select name="methodOfBuckets" id="methodOfBuckets">
+    <option value="Shoot">Shoot</option>
+    <option value="Elevator">Elevator</option>
+    <option value="Other">Random</option>
+  </select>
+
+
+
 
 
 
@@ -95,7 +116,7 @@ submit - The submit button
 
     
     const dataList = [
-        ["teamNumber", "scouterName", "matchNumber", "mobility", "ballsShotOver", "L1S", "L1F", "L2S", "L2F", "L3S", "L3F", "L4S", "L4F"]
+        ["teamNumber", "scouterName", "matchNumber", "mobility", "ballsShotOver", "Crates Pushed", "L1S", "L1F", "L2S", "L2F", "L3S", "L3F", "L4S", "L4F"]
     ]
     function submit() {
       // Gather all data
@@ -104,6 +125,7 @@ submit - The submit button
                   document.getElementById("matchNumber").value + "," + 
                   (document.getElementById("mobility").checked ? "Yes" : "No") + "," + 
                   document.getElementById("ballsShotOver").value + "," +
+                  document.getElementById("cratesPushed").value + "," +                  
                   document.getElementById("L1Succeeded").value + "," + 
                   document.getElementById("L1Failed").value + "," + 
                   document.getElementById("L2Succeeded").value + "," + 
@@ -119,6 +141,7 @@ submit - The submit button
         document.getElementById("matchNumber").value,
         (document.getElementById("mobility").checked ? "Yes" : "No"),
         document.getElementById("ballsShotOver").value,
+        document.getElementById("cratesPushed").value,
         document.getElementById("L1Succeeded").value,
         document.getElementById("L1Failed").value,
         document.getElementById("L2Succeeded").value,
