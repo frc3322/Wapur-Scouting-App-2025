@@ -66,9 +66,21 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 
 
   <p>Crates succeeded and failed:</p>
-  <p>L1<p>
+  <label for="increaseL1Button">L1:</label>
   <button onclick="changeL1Value(1)" id="increaseL1Button">0</button>
-  <button onclick="changeL1Value(-1)">Decrease! the succeded L1 by one</button>
+  <button onclick="changeL1Value(-1)">Decrease the succeded L1 by one</button>
+  <br>
+  <label for="increaseL2Button">L2:</label>
+  <button onclick="changeL2Value(1)" id="increaseL2Button">0</button>
+  <button onclick="changeL2Value(-1)">Decrease the succeded L2 by one</button>
+  <br>
+  <label for="increaseL3Button">L3:</label>
+  <button onclick="changeL3Value(1)" id="increaseL3Button">0</button>
+  <button onclick="changeL3Value(-1)">Decrease the succeded L3 by one</button>
+  <br>
+  <label for="increaseL4Button">L4:</label>
+  <button onclick="changeL4Value(1)" id="increaseL4Button">0</button>
+  <button onclick="changeL4Value(-1)">Decrease the succeded L4 by one</button>
   
   <p>Buckets:</p>
   <label for="bucketsSucceeded">L4:</label>
@@ -137,6 +149,15 @@ Put the whole form into a form tag, and make it so that it clears when you submi
     
         function changeL1Value(delta) {
         document.getElementById("increaseL1Button").textContent = +document.getElementById("increaseL1Button").textContent + delta;
+        }
+        function changeL2Value(delta) {
+        document.getElementById("increaseL2Button").textContent = +document.getElementById("increaseL2Button").textContent + delta;
+        }
+        function changeL3Value(delta) {
+        document.getElementById("increaseL3Button").textContent = +document.getElementById("increaseL3Button").textContent + delta;
+        }
+        function changeL4Value(delta) {
+        document.getElementById("increaseL4Button").textContent = +document.getElementById("increaseL4Button").textContent + delta;
         }
 
     document.getElementById("submit").addEventListener("click", submit);
