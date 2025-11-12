@@ -10,6 +10,12 @@ cratesPushed - The number of the crates pushed over the line in auto
 
 TELEOP: // Deleted L1-L4
 
+
+
+
+
+
+
 bucketsSucceeded // These three haven't been added into the QR code yet.
 bucketsFailed
 methodOfBuckets - MCQ
@@ -33,102 +39,117 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3322 Wapur 2025 Scouting</title>
+  <link rel="stylesheet" href="stylesheet.css">
+  
 </head>
 <body>
+    <div class = "section">
   <h1>3322 Wapur 2025 Scouting</h1>
+</div>
   <br>
+  <div class = "section">
   <h2>Auton:</h2>
     <label for="mobility">Mobility:</label>
+    <br>
     <input type="checkbox" id="mobility"><br>
-
+    <br>
+    
     <label for="ballsShotOver">How many balls were shot over?:</label>
+    <br>
     <select name="ballsShotOver" id="ballsShotOver">
     <option value="allShotOver">allShotOver</option>
     <option value="someShotOver">someShotOver</option>
     <option value="noneShotOver">noneShotOver</option>
   </select>
   <br>
-
+  <br>
   <label for="cratesPushed">How many crates were pushed over the line?:</label>
-  <input type="number" id="cratesPushed" placeholder="Team Number">
-
-  <h2> Teleop</h2>
-
-
-
-  <p>Crates succeeded and failed:</p>
-  <label for="increaseL1Button">L1:</label>
-  <button onclick="changeL1Value(1)" id="increaseL1Button">0</button>
-  <button onclick="changeL1Value(-1)">Decrease the succeded L1 by one</button>
   <br>
-  <label for="increaseL2Button">L2:</label>
-  <button onclick="changeL2Value(1)" id="increaseL2Button">0</button>
-  <button onclick="changeL2Value(-1)">Decrease the succeded L2 by one</button>
+  <input type="number" id="cratesPushed" placeholder="Crates">
+  </div>
   <br>
-  <label for="increaseL3Button">L3:</label>
-  <button onclick="changeL3Value(1)" id="increaseL3Button">0</button>
-  <button onclick="changeL3Value(-1)">Decrease the succeded L3 by one</button>
-  <br>
-  <label for="increaseL4Button">L4:</label>
-  <button onclick="changeL4Value(1)" id="increaseL4Button">0</button>
-  <button onclick="changeL4Value(-1)">Decrease the succeded L4 by one</button>
+  <div class="section">
+    <h2>Teleop</h2>
   
-  <p>Buckets:</p>
-  <label for="bucketsSucceeded">L4:</label>
-  <input type="number" id="bucketsSucceeded" placeholder="Team Number">
-  <input type="number" id="bucketsFailed" placeholder="Team Number">
-  <br>
+    <p>Crates succeeded and failed:</p>
   
-    <label for="methodOfBuckets">How did they score the buckets?:</label>
-    <select name="methodOfBuckets" id="methodOfBuckets">
-    <option value="Shoot">Shoot</option>
-    <option value="Elevator">Elevator</option>
-    <option value="Other">Random</option>
-  </select>
+    <div class="button-row">
+      <label for="increaseL1Button">L1:</label>
+      <button onclick="changeL1Value(1)" id="increaseL1Button">0</button>
+      <button onclick="changeL1Value(-1)">-1</button>
+    </div>
+  
+    <div class="button-row">
+      <label for="increaseL2Button">L2:</label>
+      <button onclick="changeL2Value(1)" id="increaseL2Button">0</button>
+      <button onclick="changeL2Value(-1)">-1</button>
+    </div>
+  
+    <div class="button-row">
+      <label for="increaseL3Button">L3:</label>
+      <button onclick="changeL3Value(1)" id="increaseL3Button">0</button>
+      <button onclick="changeL3Value(-1)">-1</button>
+    </div>
+  
+    <div class="button-row">
+      <label for="increaseL4Button">L4:</label>
+      <button onclick="changeL4Value(1)" id="increaseL4Button">0</button>
+      <button onclick="changeL4Value(-1)">-1</button>
+    </div>
+  </div>
 
 
+<br>
 
-
-
-
+<div class = "section">
   <h2>Match info:</h2>
   <input type="number" id="teamNumber" placeholder="Team Number">
   <input type="text" id="scouterName" placeholder="Scouter Name">
   <input type="number" id="matchNumber" placeholder="Match Number">
   <br><br>
-  <button onclick = "submit()" type="button" id="submit">Submit!</button>
+  <button type="button" id="submit">Submit!</button>
   <div id="qrcode"></div>
+</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
 
 
     
-    const dataList = []
+    const dataList = [
+        ["teamNumber", "scouterName", "matchNumber", "mobility", "ballsShotOver", "Crates Pushed", "L1S", "L1F", "L2S", "L2F", "L3S", "L3F", "L4S", "L4F"]
+    ]
     function submit() {
       // Gather all data
-        
+    
       //datalist.push(document.getElementById("matchNumber").value + "");
-      const data = document.getElementById("teamNumber").value + "," +
-        document.getElementById("scouterName").value + "," +
-        document.getElementById("matchNumber").value + "," +
-        (document.getElementById("mobility").checked ? "Yes" : "No") + "," +
-        document.getElementById("ballsShotOver").value + "," +
-        document.getElementById("cratesPushed").value;
+      dataList.push([
+        document.getElementById("teamNumber").value, 
+        document.getElementById("scouterName").value, 
+        document.getElementById("matchNumber").value,
+        (document.getElementById("mobility").checked ? "Yes" : "No"),
+        document.getElementById("ballsShotOver").value,
+        document.getElementById("cratesPushed").value        
+      ]);
 
-        dataList.push(data);
-        
+     
+        const csvContent = dataList.map(row => row.join(",")).join("\n");
 
-        //clear qr code
-        document.getElementById("qrcode").innerHTML = "";
+        // Create a "data URI" that browsers treat as a file download
+        const dataUrl = "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent);
 
-        //generate new qr code
-        qrCode = new QRCode(document.getElementById("qrcode"), {
-        text: data,   
-        width: 600,
-        height: 600
+
+
+
+        // Generate QR code linking to the CSV data URL
+        new QRCode(document.getElementById("qrcode"), {
+        text: dataUrl,   // this is the file download link encoded in the QR
+        width: 200,
+        height: 200
         });
 
       }
@@ -146,6 +167,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         document.getElementById("increaseL4Button").textContent = +document.getElementById("increaseL4Button").textContent + delta;
         }
 
+    document.getElementById("submit").addEventListener("click", submit);
   </script>
 </body>
 </html>
