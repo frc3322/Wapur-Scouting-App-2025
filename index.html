@@ -10,12 +10,6 @@ cratesPushed - The number of the crates pushed over the line in auto
 
 TELEOP: // Deleted L1-L4
 
-
-
-
-
-
-
 bucketsSucceeded // These three haven't been added into the QR code yet.
 bucketsFailed
 methodOfBuckets - MCQ
@@ -105,48 +99,36 @@ Put the whole form into a form tag, and make it so that it clears when you submi
   <input type="text" id="scouterName" placeholder="Scouter Name">
   <input type="number" id="matchNumber" placeholder="Match Number">
   <br><br>
-  <button type="button" id="submit">Submit!</button>
+  <button onclick = "submit()" type="button" id="submit">Submit!</button>
   <div id="qrcode"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
 
 
     
-    const dataList = [
-        ["teamNumber", "scouterName", "matchNumber", "mobility", "ballsShotOver", "Crates Pushed", "L1S", "L1F", "L2S", "L2F"]
-    ]
+    const dataList = []
     function submit() {
       // Gather all data
-    
+        
       //datalist.push(document.getElementById("matchNumber").value + "");
-      dataList.push([
-        document.getElementById("teamNumber").value, 
-        document.getElementById("scouterName").value, 
-        document.getElementById("matchNumber").value,
-        (document.getElementById("mobility").checked ? "Yes" : "No"),
-        document.getElementById("ballsShotOver").value,
-        document.getElementById("cratesPushed").value,        
+      const data = document.getElementById("teamNumber").value + "," +
+        document.getElementById("scouterName").value + "," +
+        document.getElementById("matchNumber").value + "," +
+        (document.getElementById("mobility").checked ? "Yes" : "No") + "," +
+        document.getElementById("ballsShotOver").value + "," +
+        document.getElementById("cratesPushed").value;
 
-        document.getElementById("increaseL1Button").textContent,        
-        document.getElementById("increaseL2Button").textContent,        
-        document.getElementById("increaseL3Button").textContent,        
-        document.getElementById("increaseL4Button").textContent     
-      ]);
+        dataList.push(data);
+        
 
-     
-        const csvContent = dataList.map(row => row.join(",")).join("\n");
+        //clear qr code
+        document.getElementById("qrcode").innerHTML = "";
 
-        // Create a "data URI" that browsers treat as a file download
-        const dataUrl = "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent);
-
-
-
-
-        // Generate QR code linking to the CSV data URL
-        new QRCode(document.getElementById("qrcode"), {
-        text: dataUrl,   // this is the file download link encoded in the QR
-        width: 200,
-        height: 200
+        //generate new qr code
+        qrCode = new QRCode(document.getElementById("qrcode"), {
+        text: data,   
+        width: 600,
+        height: 600
         });
 
       }
@@ -164,7 +146,6 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         document.getElementById("increaseL4Button").textContent = +document.getElementById("increaseL4Button").textContent + delta;
         }
 
-    document.getElementById("submit").addEventListener("click", submit);
   </script>
 </body>
 </html>
