@@ -1,0 +1,150 @@
+    body {
+        background-color: lightblue;
+        font-family: "Barlow", sans-serif;
+        text-align: center;
+    }
+    button {
+        padding: 36px 36px
+    }
+    input {
+        padding: 18px 18px;
+        margin: 6px;
+    }
+    input[type="checkbox"] {
+        transform: scale(2.5);
+        margin: 10px;
+        cursor: pointer;
+      }
+    select {
+        padding: 18px 18px;
+    }
+    .button-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2px; 
+        margin: 2px 0;
+      }
+      
+      .button-row label {
+        width: 40px; 
+        text-align: right;
+        margin-right: 10px;
+      }
+    .section {
+        margin: auto;
+        width: 80%;
+        border: 3px solid black;
+        border-radius: 3px;
+        padding: 10px;
+        background-color: lightskyblue;
+        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 12px 0 rgba(0, 0, 0, 0.19);
+    }
+    .barlow-thin {
+        font-family: "Barlow", sans-serif;
+        font-weight: 100;
+        font-style: normal;
+    }
+    
+    .barlow-extralight {
+        font-family: "Barlow", sans-serif;
+        font-weight: 200;
+        font-style: normal;
+    }
+    
+    .barlow-light {
+        font-family: "Barlow", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+    }
+    
+    .barlow-regular {
+        font-family: "Barlow", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .barlow-medium {
+        font-family: "Barlow", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+    
+    .barlow-semibold {
+        font-family: "Barlow", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+    
+    .barlow-bold {
+        font-family: "Barlow", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+    
+    .barlow-extrabold {
+        font-family: "Barlow", sans-serif;
+        font-weight: 800;
+        font-style: normal;
+    }
+    
+    .barlow-black {
+        font-family: "Barlow", sans-serif;
+        font-weight: 900;
+        font-style: normal;
+    }
+    
+    .barlow-thin-italic {
+        font-family: "Barlow", sans-serif;
+        font-weight: 100;
+        font-style: italic;
+    }
+    
+    .barlow-extralight-italic {
+        font-family: "Barlow", sans-serif;
+        font-weight: 200;
+        font-style: italic;
+    }
+    
+    .barlow-light-italic {
+        font-family: "Barlow", sans-serif;
+        font-weight: 300;
+        font-style: italic;
+    }
+    
+    .barlow-regular-italic {
+        font-family: "Barlow", sans-serif;
+        font-weight: 400;
+        font-style: italic;
+    }
+    
+    .barlow-medium-italic {
+        font-family: "Barlow", sans-serif;
+        font-weight: 500;
+        font-style: italic;
+    }
+    
+    .barlow-semibold-italic {
+        font-family: "Barlow", sans-serif;
+        font-weight: 600;
+        font-style: italic;
+    }
+    
+    .barlow-bold-italic {
+        font-family: "Barlow", sans-serif;
+        font-weight: 700;
+        font-style: italic;
+    }
+    
+    .barlow-extrabold-italic {
+        font-family: "Barlow", sans-serif;
+        font-weight: 800;
+        font-style: italic;
+    }
+    
+    .barlow-black-italic {
+        font-family: "Barlow", sans-serif;
+        font-weight: 900;
+        font-style: italic;
+    }
+    
