@@ -53,7 +53,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
   <br>
 
   <label for="cratesPushed">How many crates were pushed over the line?:</label>
-  <input type="text" id="cratesPushed" placeholder="Team Number">
+  <input type="number" id="cratesPushed" placeholder="Team Number">
 
   <h2> Teleop</h2>
 
@@ -78,8 +78,8 @@ Put the whole form into a form tag, and make it so that it clears when you submi
   
   <p>Buckets:</p>
   <label for="bucketsSucceeded">L4:</label>
-  <input type="text" id="bucketsSucceeded" placeholder="Team Number">
-  <input type="text" id="bucketsFailed" placeholder="Team Number">
+  <input type="number" id="bucketsSucceeded" placeholder="Team Number">
+  <input type="number" id="bucketsFailed" placeholder="Team Number">
   <br>
   
     <label for="methodOfBuckets">How did they score the buckets?:</label>
@@ -95,13 +95,12 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 
 
   <h2>Match info:</h2>
-  <input type="text" id="teamNumber" placeholder="Team Number">
+  <input type="number" id="teamNumber" placeholder="Team Number">
   <input type="text" id="scouterName" placeholder="Scouter Name">
-  <input type="text" id="matchNumber" placeholder="Match Number">
+  <input type="number" id="matchNumber" placeholder="Match Number">
   <br><br>
   <button onclick = "submit()" type="button" id="submit">Submit!</button>
   <div id="qrcode"></div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
 
