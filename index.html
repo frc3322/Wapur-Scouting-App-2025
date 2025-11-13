@@ -76,29 +76,56 @@ Put the whole form into a form tag, and make it so that it clears when you submi
   <div class="section">
     <h2>Teleop</h2>
   
-    <p>Crates succeeded and failed:</p>
+    <p>Crates succeeded:</p>
   
     <div class="button-row">
       <label for="increaseL1Button">L1:</label>
-      <button onclick="changeL1Value(1)" id="increaseL1Button">0</button>
-      <button onclick="changeL1Value(-1)">-1</button>
+      <button onclick="changeL1Value(1, 1)" id="increaseL1Button">0</button>
+      <button onclick="changeL1Value(-1, 1)">-1</button>
     </div>
   
     <div class="button-row">
       <label for="increaseL2Button">L2:</label>
-      <button onclick="changeL2Value(1)" id="increaseL2Button">0</button>
-      <button onclick="changeL2Value(-1)">-1</button>
+      <button onclick="changeL2Value(1, 1)" id="increaseL2Button">0</button>
+      <button onclick="changeL2Value(-1, 1)">-1</button>
     </div>
   
     <div class="button-row">
       <label for="increaseL3Button">L3:</label>
-      <button onclick="changeL3Value(1)" id="increaseL3Button">0</button>
-      <button onclick="changeL3Value(-1)">-1</button>
+      <button onclick="changeL3Value(1, 1)" id="increaseL3Button">0</button>
+      <button onclick="changeL3Value(-1, 1)">-1</button>
     </div>
   
     <div class="button-row">
       <label for="increaseL4Button">L4:</label>
-      <button onclick="changeL4Value(1)" id="increaseL4Button">0</button>
+      <button onclick="changeL4Value(1, 1)" id="increaseL4Button">0</button>
+      <button onclick="changeL4Value(-1, 1)">-1</button>
+    </div>
+  </div>
+
+  <p>Crates Failed:</p>
+
+    <div class="button-row">
+      <label for="decreaseL1Button">L1:</label>
+      <button onclick="changeL1Value(1)" id="decreaseL1Button">0</button>
+      <button onclick="changeL1Value(-1)">-1</button>
+    </div>
+  
+    <div class="button-row">
+      <label for="decreaseL2Button">L2:</label>
+      <button onclick="changeL2Value(1)" id="decreaseL2Button">0</button>
+      <button onclick="changeL2Value(-1)">-1</button>
+    </div>
+  
+    <div class="button-row">
+      <label for="decreaseL3Button">L3:</label>
+      <button onclick="changeL3Value(1)" id="decreaseL3Button">0</button>
+      <button onclick="changeL3Value(-1)">-1</button>
+    </div>
+  
+    <div class="button-row">
+      <label for="decreaseL4Button">L4:</label>
+      <button onclick="changeL4Value(1)" id="decreaseL4Button">0</button>
       <button onclick="changeL4Value(-1)">-1</button>
     </div>
   </div>
@@ -154,18 +181,43 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 
       }
     
-        function changeL1Value(delta) {
-        document.getElementById("increaseL1Button").textContent = +document.getElementById("increaseL1Button").textContent + delta;
+        function changeL1Value(delta, what) {
+          if(what == 1){
+          document.getElementById("increaseL1Button").textContent = +document.getElementById("increaseL1Button").textContent + delta;
+          }
+          else{
+          document.getElementById("decreaseL1Button").textContent = +document.getElementById("decreaseL1Button").textContent + delta;
+          }
         }
-        function changeL2Value(delta) {
+        function changeL2Value(delta, what) {
+          if(what == 1){
         document.getElementById("increaseL2Button").textContent = +document.getElementById("increaseL2Button").textContent + delta;
-        }
-        function changeL3Value(delta) {
+          }
+          else{
+        document.getElementById("decreaseL2Button").textContent = +document.getElementById("decreaseL2Button").textContent + delta;
+          }
+      }
+        function changeL3Value(delta, what) {
+          if(what == 1)
+        {
         document.getElementById("increaseL3Button").textContent = +document.getElementById("increaseL3Button").textContent + delta;
         }
-        function changeL4Value(delta) {
+        else{
+        document.getElementById("decreaseL3Button").textContent = +document.getElementById("decreaseL3Button").textContent + delta;
+
+        }
+      }
+        function changeL4Value(delta, what) {
+          if(what == 1){
+
+        
         document.getElementById("increaseL4Button").textContent = +document.getElementById("increaseL4Button").textContent + delta;
         }
+        else{
+          document.getElementById("decreaseL4Button").textContent = +document.getElementById("decreaseL4Button").textContent + delta;
+
+        }
+      }
 
     document.getElementById("submit").addEventListener("click", submit);
   </script>
