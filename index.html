@@ -62,9 +62,9 @@ Put the whole form into a form tag, and make it so that it clears when you submi
     <label for="ballsShotOver">How many balls were shot over?:</label>
     <br>
     <select name="ballsShotOver" id="ballsShotOver">
-    <option value="allShotOver">allShotOver</option>
-    <option value="someShotOver">someShotOver</option>
-    <option value="noneShotOver">noneShotOver</option>
+    <option value="all">All shot over</option>
+    <option value="some">Some shot over</option>
+    <option value="None">None shot over</option>
   </select>
   <br>
   <br>
@@ -101,7 +101,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
       <button onclick="changeL4Value(1, 1)" id="increaseL4Button">0</button>
       <button onclick="changeL4Value(-1, 1)">-1</button>
     </div>
-  </div>
+ 
 
   <p>Crates Failed:</p>
 
@@ -129,7 +129,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
       <button onclick="changeL4Value(-1)">-1</button>
     </div>
   </div>
-
+</div>
 
 <br>
 
@@ -141,7 +141,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
   <br><br>
   <button type="button" id="submit">Submit!</button>
   <div id="qrcode"></div>
-</div>
+    </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
 
@@ -154,14 +154,24 @@ Put the whole form into a form tag, and make it so that it clears when you submi
       // Gather all data
     
       //datalist.push(document.getElementById("matchNumber").value + "");
-      data =  document.getElementById("teamNumber").value + "%" + 
-        document.getElementById("scouterName").value + "%" + 
-        document.getElementById("matchNumber").value + "%" + 
-        (document.getElementById("mobility").checked ? "Yes" : "No") + "%" + 
-        document.getElementById("ballsShotOver").value + "%" + 
-        document.getElementById("cratesPushed").value;
+      data =  document.getElementById("teamNumber").value + "," + 
+        document.getElementById("scouterName").value + "," + 
+        document.getElementById("matchNumber").value + "," + 
+        (document.getElementById("mobility").checked ? "Yes" : "No") + "," + 
+        document.getElementById("ballsShotOver").value + "," + 
+        document.getElementById("cratesPushed").value + "," + 
+        document.getElementById("increaseL1Button").textContent + "," +
+        document.getElementById("increaseL2Button").textContent + "," +
+        document.getElementById("increaseL3Button").textContent + "," +
+        document.getElementById("increaseL4Button").textContent + "," +
+        document.getElementById("decreaseL1Button").textContent + "," +
+        document.getElementById("decreaseL2Button").textContent + "," +
+        document.getElementById("decreaseL3Button").textContent + "," +
+        document.getElementById("decreaseL4Button").textContent;
+
 
         dataList.push(data);
+
 
         document.getElementById("qrcode").innerHTML = "";
         
@@ -171,6 +181,8 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         width: 200,
         height: 200
         });
+        
+            window.location.href = "qrcode.html" + "?data=" + data;
 
 
 
