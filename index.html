@@ -19,7 +19,7 @@ TELEOP: // Deleted L1-L4
 bucketsSucceeded // These three haven't been added into the QR code yet.
 bucketsFailed
 methodOfBuckets - MCQ
-
+breakdown - the breakdown
 
 MATCH INFORMATION:
 teamNumber - The team number
@@ -145,8 +145,14 @@ Put the whole form into a form tag, and make it so that it clears when you submi
   <button type="button" id="submit">Submit!</button>
   <div id="qrcode"></div>
     </div>
+
+    <button id="breakdown">0</button>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
+    
+    let isBroken = false;
+    let now = new Date();
+    let starting = (now.getMinutes() + "." + now.getSeconds() + now.getMilliseconds()); 
 
 
     
@@ -229,7 +235,27 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         }
       }
 
+      function breakdownToggle()
+      {
+        if (isBroken == false)
+      {
+        starting = Date.now(); // Use global variable
+        isBroken = true;
+        document.getElementById("breakdown").style.backgroundColor = "yellow";
+      }
+      else
+      {
+        document.getElementById("breakdown").style.backgroundColor = "lightgray";
+        isBroken = false;
+        //alert(Date.now() - starting);
+        document.getElementById("breakdown").textContent = parseInt(document.getElementById("breakdown").textContent) + Date.now() - starting
+        }
+        //let starting = (now.getMinutes() + "." + now.getSeconds() + now.getMilliseconds()); 
+
+      }
+
     document.getElementById("submit").addEventListener("click", submit);
+    document.getElementById("breakdown").addEventListener("click", breakdownToggle);
   </script>
 </body>
 </html>
