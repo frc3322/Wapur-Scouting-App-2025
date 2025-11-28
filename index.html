@@ -150,10 +150,10 @@ Put the whole form into a form tag, and make it so that it clears when you submi
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
     
+    let breakdownTotal = 0;
+    let breakdownInterval;
     let isBroken = false;
-    let now = new Date();
-    let starting = (now.getMinutes() + "." + now.getSeconds() + now.getMilliseconds()); 
-
+    let starting = 0;
 
     
     const dataList = [
@@ -242,13 +242,24 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         starting = Date.now(); // Use global variable
         isBroken = true;
         document.getElementById("breakdown").style.backgroundColor = "yellow";
+
+
+        breakdownInterval = setInterval(() => {
+      document.getElementById("breakdown").textContent = Date.now() - starting;
+    }, 100);
       }
       else
       {
         document.getElementById("breakdown").style.backgroundColor = "lightgray";
         isBroken = false;
         //alert(Date.now() - starting);
-        document.getElementById("breakdown").textContent = parseInt(document.getElementById("breakdown").textContent) + Date.now() - starting
+        clearInterval(breakdownInterval);
+        let elapsed = Date.now() - starting;
+        breakdownTotal += elapsed;
+        document.getElementById("breakdown").textContent = breakdownTotal;
+
+
+
         }
         //let starting = (now.getMinutes() + "." + now.getSeconds() + now.getMilliseconds()); 
 
