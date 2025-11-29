@@ -75,6 +75,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
   <br>
   <div class="section">
     <h2>Teleop</h2>
+    <h3>Crates:</h3>
   
     <p>⠀⠀⠀⠀Crates succeeded:   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   Crates failed:</p>
   
@@ -115,8 +116,29 @@ Put the whole form into a form tag, and make it so that it clears when you submi
       <label for="decreaseL4Button">L4:</label>
       <button onclick="changeL4Value(1)" id="decreaseL4Button">0</button>
       <button onclick="changeL4Value(-1)">-1</button>
+      <br>
+          </div>
+
+    <h3>Buckets:</h3>
+    <br>
+    <p>⠀⠀⠀⠀Crates succeeded:   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   Crates failed:</p>
+    <div class="button-row">
+      <label for="increaseBucketButton">L1:</label>
+      <button onclick="changeBucketValue(1, 1)" id="increaseBucketButton">0</button>
+      <button onclick="changeBucketValue(-1, 1)">-1</button>
+    <label for="decreaseBucketButton">L1:</label>
+      <button onclick="changeBucketValue(1)" id="decreaseBucketButton">0</button>
+      <button onclick="changeBucketValue(-1)">-1</button>
 
     </div>
+
+    <label for="methodOfBuckets">How were the balls put in the bucket?:</label>
+    <select name="methodOfBuckets" id="methodOfBuckets">
+    <option value="Random">I do not know</option>
+    <option value="Elevator">Elevator</option>
+    <option value="Shooting">Shooting</option>
+  </select>
+
  
 
 
@@ -142,11 +164,13 @@ Put the whole form into a form tag, and make it so that it clears when you submi
   <input type="text" id="scouterName" placeholder="Scouter Name">
   <input type="number" id="matchNumber" placeholder="Match Number">
   <br><br>
+  <label for="breakdown">Breakdown Toggle:</label>
+  <button id="breakdown">0</button>
+  <br><br>
   <button type="button" id="submit">Submit!</button>
   <div id="qrcode"></div>
     </div>
 
-    <button id="breakdown">0</button>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
     
@@ -176,7 +200,11 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         document.getElementById("decreaseL1Button").textContent + "," +
         document.getElementById("decreaseL2Button").textContent + "," +
         document.getElementById("decreaseL3Button").textContent + "," +
-        document.getElementById("decreaseL4Button").textContent;
+        document.getElementById("decreaseL4Button").textContent + "," +
+        document.getElementById("increaseBucketButton").textContent + "," +
+        document.getElementById("decreaseBucketButton").textContent + "," +
+        document.getElementById("methodOfBuckets").value + "," +
+        document.getElementById("breakdown").textContent + ",";
 
 
         dataList.push(data);
@@ -203,6 +231,14 @@ Put the whole form into a form tag, and make it so that it clears when you submi
           }
           else{
           document.getElementById("decreaseL1Button").textContent = +document.getElementById("decreaseL1Button").textContent + delta;
+          }
+        }
+        function changeBucketValue(delta, what) {
+          if(what == 1){
+          document.getElementById("increaseBucketButton").textContent = +document.getElementById("increaseBucketButton").textContent + delta;
+          }
+          else{
+          document.getElementById("decreaseBucketButton").textContent = +document.getElementById("decreaseBucketButton").textContent + delta;
           }
         }
         function changeL2Value(delta, what) {
@@ -233,6 +269,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
           document.getElementById("decreaseL4Button").textContent = +document.getElementById("decreaseL4Button").textContent + delta;
 
         }
+
       }
 
       function breakdownToggle()
