@@ -19,7 +19,7 @@ TELEOP: // Deleted L1-L4
 bucketsSucceeded // These three haven't been added into the QR code yet.
 bucketsFailed
 methodOfBuckets - MCQ
-
+breakdown - the breakdown
 
 MATCH INFORMATION:
 teamNumber - The team number
@@ -142,18 +142,26 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 
   <br>
 
-  <div class="section">
-    <h2>Match info:</h2>
-    <input type="number" id="teamNumber" placeholder="Team Number">
-    <input type="text" id="scouterName" placeholder="Scouter Name">
-    <input type="number" id="matchNumber" placeholder="Match Number">
-    <br><br>
-    <button type="button" id="submit">Submit!</button>
-    <div id="qrcode"></div>
-  </div>
+<div class = "section">
+  <h2>Match info:</h2>
+  <input type="number" id="teamNumber" placeholder="Team Number">
+  <input type="text" id="scouterName" placeholder="Scouter Name">
+  <input type="number" id="matchNumber" placeholder="Match Number">
+  <br><br>
+  <label for="breakdown">Breakdown Toggle:</label>
+  <button id="breakdown">0</button>
+  <br><br>
+  <button type="button" id="submit">Submit!</button>
+  <div id="qrcode"></div>
+    </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
-
+    
+    let breakdownTotal = 0;
+    let breakdownInterval;
+    let isBroken = false;
+    let starting = 0;
 
 
     const dataList = [
@@ -199,7 +207,11 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         document.getElementById("decreaseL1Button").textContent + "," +
         document.getElementById("decreaseL2Button").textContent + "," +
         document.getElementById("decreaseL3Button").textContent + "," +
-        document.getElementById("decreaseL4Button").textContent;
+        document.getElementById("decreaseL4Button").textContent + "," +
+        document.getElementById("increaseBucketButton").textContent + "," +
+        document.getElementById("decreaseBucketButton").textContent + "," +
+        document.getElementById("methodOfBuckets").value + "," +
+        document.getElementById("breakdown").textContent + ",";
 
 
       dataList.push(data);
@@ -229,6 +241,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
     }
 
     document.getElementById("submit").addEventListener("click", submit);
+    document.getElementById("breakdown").addEventListener("click", breakdownToggle);
   </script>
 </body>
 
