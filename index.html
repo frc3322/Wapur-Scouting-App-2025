@@ -209,7 +209,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 
 
         breakdownInterval = setInterval(() => {
-          document.getElementById("breakdown").textContent = Date.now() - starting;
+          document.getElementById("breakdown").textContent = (Date.now() - starting)/1000;
         }, 100);
       }
       else {
@@ -239,13 +239,15 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         document.getElementById("ballsShotOver").value + "," +
         document.getElementById("cratesPushed").value + "," +
         crateData[1][0] + "," +
-        crateData[1][0] + "," +
-        crateData[1][0] + "," +
-        crateData[1][0] + "," +
-        crateData[1][0] + "," +
-        crateData[1][0] + "," +
-        crateData[1][0] + "," +
-        crateData[1][0];
+        crateData[1][1] + "," +
+        crateData[1][2] + "," +
+        crateData[1][3] + "," +
+        crateData[1][4] + "," +
+        crateData[1][5] + "," +
+        crateData[1][6] + "," +
+        crateData[1][7] + "," +
+        crateData[1][8] + "," +
+        crateData[1][9] + ",";
 
 
       dataList.push(data);
