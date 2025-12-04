@@ -130,8 +130,26 @@ Put the whole form into a form tag, and make it so that it clears when you submi
     </div>
 
 
-  </div>
-  </div>
+    <h3>Buckets:</h3>
+    <br>
+    <p>⠀⠀⠀⠀Buckets succeeded:   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   Buckets failed:</p>
+    <div class="button-row">
+      <label for="increaseBucketButton">Bucket:</label>
+      <button onclick="updateCrateData(5, 1, 1)" id="L5SuccessButton">0</button>
+      <button onclick="updateCrateData(5, 1, -1)">-1</button>
+    <label for="decreaseBucketButton">L1:</label>
+      <button onclick="updateCrateData(5, 0, 1)" id="L5FailureButton">0</button>
+      <button onclick="updateCrateData(5, 0, -1)">-1</button>
+
+    </div>
+
+    <label for="methodOfBuckets">How were the balls put in the bucket?:</label>
+    <select name="methodOfBuckets" id="methodOfBuckets">
+    <option value="Random">I do not know</option>
+    <option value="Elevator">Elevator</option>
+    <option value="Shooting">Shooting</option>
+  </select>
+
 
   <br>
 
@@ -168,8 +186,10 @@ Put the whole form into a form tag, and make it so that it clears when you submi
       "L3 Success: ",
       "L3 Failure: ",
       "L4 Success: ",
-      "L4 Failure: "],
-    [0, 0, 0, 0, 0, 0, 0, 0],
+      "L4 Failure: ", 
+      "Bucket Success",
+      "Bucket Failure"],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [document.getElementById("L1SuccessButton").textContent,
     document.getElementById("L1FailureButton").textContent,
     document.getElementById("L2SuccessButton").textContent,
