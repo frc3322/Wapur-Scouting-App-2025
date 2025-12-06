@@ -151,23 +151,24 @@ Put the whole form into a form tag, and make it so that it clears when you submi
   <div class="section">
     <h2>Match info:</h2>
     <select  id="teamNumber">
-  <option value="Citrus">Citrus Circuits</option>
-  <option value="Cheezy Poofs">Cheezy Poofs</option>
-  <option value="Jack in the Bots">Jack in the Bots</option>
-  <option value="Hammond">Hammond</option>
+  <option value=1>Citrus Circuits</option>
+  <option value=2>Cheezy Poofs</option>
+  <option value=3>Jack in the Bots</option>
+  <option value=4>Hammond</option>
 
-  <option value="Hot Team">Hot Team</option>
-  <option value="Hammond">Hammond </option>
-  <option value="Madtown">Madtown</option>
-  <option value="Robonauts">Robonauts</option>
-  <option value="BBQ">BBQ</option>
-  <option value="Thunder Chickens">Thunder Chickens</option>
+  <option value=5>Hot Team</option>
+  <option value=6>Hammond </option>
+  <option value=7>Madtown</option>
+  <option value=8>Robonauts</option>
+  <option value=9>BBQ</option>
+  <option value=10>Thunder Chickens</option>
 </select>
     <input type="text" id="scouterName" placeholder="Scouter Name">
     <input type="number" id="matchNumber" placeholder="Match Number">
     <br><br>
     <label for="breakdown">Breakdown:</label>
-    <button id="breakdown">0</button>
+    <br>
+    <button id="breakdown">0.00</button>
     <br><br>
     <button type="button" id="submit">Submit!</button>
     <div id="qrcode"></div>
@@ -216,7 +217,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 
 
         breakdownInterval = setInterval(() => {
-          document.getElementById("breakdown").textContent = (Date.now() - starting);
+          document.getElementById("breakdown").textContent = (((Date.now() - starting)+ breakdownTotal) / 1000 ).toFixed(2);
         }, 100);
       }
       else {
@@ -224,9 +225,9 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         isBroken = false;
         //alert(Date.now() - starting);
         clearInterval(breakdownInterval);
-        let elapsed = Date.now() - starting;
+        let elapsed = ((Date.now() - starting));
         breakdownTotal += elapsed;
-        document.getElementById("breakdown").textContent = breakdownTotal;
+        document.getElementById("breakdown").textContent = (breakdownTotal/1000).toFixed(2);
 
 
 
@@ -254,7 +255,8 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         crateData[1][6] + "," +
         crateData[1][7] + "," +
         crateData[1][8] + "," +
-        crateData[1][9];
+        crateData[1][9] + "," +
+        + breakdownTotal;
 
 
       dataList.push(data);
