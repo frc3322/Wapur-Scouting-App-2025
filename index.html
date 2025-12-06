@@ -65,9 +65,11 @@ Put the whole form into a form tag, and make it so that it clears when you submi
     <label for="ballsShotOver">How many balls were shot over?:</label>
     <br>
     <select name="ballsShotOver" id="ballsShotOver">
-      <option value="all">All shot over</option>
-      <option value="some">Some shot over</option>
-      <option value="None">None shot over</option>
+      <option value=4>All shot over</option>
+      <option value=3>More than half shot over</option>
+      <option value=2>Half shot over</option>
+      <option value=1>Less than half shot over</option>
+      <option value=0>None shot over</option>
     </select>
     <br>
     <br>
@@ -78,8 +80,6 @@ Put the whole form into a form tag, and make it so that it clears when you submi
   <br>
   <div class="section">
     <h2>Teleop</h2>
-
-    <p>⠀⠀⠀⠀Crates succeeded: ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Crates failed:</p>
 
     <!-- L4 -->
     <div class="buttons">
@@ -132,23 +132,18 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 
     <h3>Buckets:</h3>
     <br>
-    <p>⠀⠀⠀⠀Buckets succeeded:   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   Buckets failed:</p>
-    <div class="button-row">
-      <label for="increaseBucketButton">Bucket:</label>
-      <button onclick="updateCrateData(5, 1, 1)" id="L5SuccessButton">0</button>
-      <button onclick="updateCrateData(5, 1, -1)">-1</button>
-    <label for="decreaseBucketButton">L1:</label>
-      <button onclick="updateCrateData(5, 0, 1)" id="L5FailureButton">0</button>
-      <button onclick="updateCrateData(5, 0, -1)">-1</button>
+    <div class="buttons">
+      <div id="l5-button-success" class="successButton">
+        <button onclick="updateCrateData(5, 1, 1)" id="L5SuccessButton" class="incButton">Bucket Success: </br>&lt 0 &gt</button>
+        <button onclick="updateCrateData(5, 1, -1)" class="decButton">-1</button>
+      </div>
+      <div id="l5-button-failure" class="failureButton">
+        <button onclick="updateCrateData(5, 0, 1)" id="L5FailureButton" class="incButton">Bucket Failure: </br>&lt 0 &gt</button>
+        <button onclick="updateCrateData(5, 0, -1)" class="decButton">-1</button>
+      </div>
 
     </div>
 
-    <label for="methodOfBuckets">How were the balls put in the bucket?:</label>
-    <select name="methodOfBuckets" id="methodOfBuckets">
-    <option value="Random">I do not know</option>
-    <option value="Elevator">Elevator</option>
-    <option value="Shooting">Shooting</option>
-  </select>
 
 
   <br>
@@ -159,7 +154,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
     <input type="text" id="scouterName" placeholder="Scouter Name">
     <input type="number" id="matchNumber" placeholder="Match Number">
     <br><br>
-    <label for="breakdown">Breakdown Toggle:</label>
+    <label for="breakdown">Breakdown:</label>
     <button id="breakdown">0</button>
     <br><br>
     <button type="button" id="submit">Submit!</button>
@@ -176,7 +171,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 
 
     const dataList = [
-      "teamNumber%scouterName%matchNumber%mobility%ballsShotOver%Crates Pushed%L1S%L1F%L2S%L2F%L3S%L3F%L4S%L4F"]
+      "teamNumber,scouterName,matchNumber,mobility,ballsShotOver,Crates Pushed,L1S,L1F,L2S,L2F,L3S,L3F,L4S,L4F"]
 
     //l1 success, l1 fail, l2 success, l2 fail, l3 success, l3 fail, l4 success, l4 fail
     const crateData = [["L1 Success: ",
@@ -209,7 +204,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
 
 
         breakdownInterval = setInterval(() => {
-          document.getElementById("breakdown").textContent = (Date.now() - starting)/1000;
+          document.getElementById("breakdown").textContent = (Date.now() - starting);
         }, 100);
       }
       else {
@@ -247,7 +242,7 @@ Put the whole form into a form tag, and make it so that it clears when you submi
         crateData[1][6] + "," +
         crateData[1][7] + "," +
         crateData[1][8] + "," +
-        crateData[1][9] + ",";
+        crateData[1][9];
 
 
       dataList.push(data);

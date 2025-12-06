@@ -48,7 +48,10 @@ select {
     width: 20%;
     height: 50px; 
  } 
-
+ #breakdown{
+    width:20%;
+    height:80px;
+ }
 
 
 .section {
